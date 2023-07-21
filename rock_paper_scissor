@@ -1,0 +1,52 @@
+import random
+comp_score=0
+user_score=0
+Rounds=0
+Tie_rounds=0
+play_again="yes"
+options=['rock', 'paper', 'scissor']
+
+di={
+  'rock':'🪨',
+  'paper':'📄',
+  'scissor':'✂️',
+  'tie':'😵',
+  'win':'🏆',
+  'lose':'😞'
+}
+  
+while play_again.lower() !="no":
+  Rounds+=1
+  comp_input=random.choice(options).lower()
+  user_input=input("Enter your choice,(You can enter rock, paper or scissor:-").lower()
+   
+  if user_input not in options:
+    print("Your input is invalid")
+    continue
+
+  print("your choice:",di[user_input],end="  ")
+  print(" and computer's choice:", di[comp_input],end="  ")
+
+  if user_input == comp_input:
+   print("its a tie",di['tie'])
+   Tie_rounds+=1
+
+  elif (user_input =='rock' and comp_input == 'scissor') or \
+       (user_input == 'paper' and comp_input == 'rock') or \
+       (user_input == 'scissor' and comp_input =='paper'):
+    print("You Winner..",di['win'])
+    user_score+=1
+  else:
+    print(" Computer Winner..",di['lose'])
+    comp_score+=1
+  play_again=input("Do you want to play again?")
+              
+if play_again =="no":
+  print("Total Round:", Rounds)
+  print("Tie Rounds:",Tie_rounds)
+if comp_score > user_score:
+  print('Computer is winner','🏆')
+else:
+  print('You are winner','🏆')
+   
+    
